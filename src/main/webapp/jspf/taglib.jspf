@@ -1,0 +1,7 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="/WEB-INF/mytaglib.tld" prefix="mylib"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page pageEncoding="UTF-8" %>
+<%@page isELIgnored="false" %>
+

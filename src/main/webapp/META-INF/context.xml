@@ -1,0 +1,37 @@
+<Context path="jdbc/Project">
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+    <!--=============================================================
+    maxActive: the maximum number of active connections that can be
+    allocated from this pool at the same time, negative for no limit.
+    (default 8)
+
+    maxIdle: the maximum number of connections that can remain idle in
+    the pool, without extra ones being released, negative for no limit.
+    (default 8)
+
+    maxWait: the maximum number of milliseconds that the pool will wait
+    (when there are no availasble connections) for a connection to be
+    returned before throwing an exception, -1 to wait indefinitely.
+
+    url: the connection URL to be passed to JDBC driver to establish
+    a connection.
+
+    driverClassName: the FQN of the JDBC driver to be used.
+
+    defaultAutoCommit: the default auto-commit state of connections
+    created by this pool.
+    (default true)
+
+    defaultTransactionIsolation: the default TransactionIsolation
+    state of connections created by this pool.
+    One of the following: (see javadoc)
+    NONE  READ_COMMITTED  READ_UNCOMMITTED  REPEATABLE_READ SERIALIZABLE
+    (default - driver default)
+    =============================================================-->
+
+    <Resource name="jdbc/Project" auth="Container" type="javax.sql.DataSource"
+              maxTotal="100" maxIdle="30"  maxWaitMillis="5000"
+              username="newdatabase" password="newdatabase" driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://aa1i0s0ekydngv6.c6vksnivjpwf.eu-central-1.rds.amazonaws.com:3306/ebdb?useSSL=false"/>
+
+</Context>

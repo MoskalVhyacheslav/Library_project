@@ -1,0 +1,28 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<header id="header">
+<ul class="actions">
+
+<c:choose>
+    <c:when test="${empty user}">
+        <li><a href="../jsp/SignUp.jsp" class="button special">Sign Up</a></li>
+        <li><strong>
+            or
+        </strong></li>
+        <li><a href="../jsp/LogIn.jsp" class="button">Log In</a></li>
+    </c:when>
+
+    <c:when test="${not empty user}">
+        <li><a href="../jsp/user/UserPage.jsp" class="button special">Hi,${user.login}</a></li>
+        <li><strong>
+            or
+        </strong></li>
+        <li>
+        <li><a href="/controller?command=logOut" class="button special">Log Out</a></li>
+    </c:when>
+</c:choose>
+
+    <li><img src="../assets/fonts/united-states.png"/></li>
+
+    <li><img src="../assets/fonts/ukraine-1.png"/></li></ul>
+    </header>

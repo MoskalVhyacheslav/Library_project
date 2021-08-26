@@ -1,0 +1,67 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!-- Sidebar -->
+<div id="sidebar">
+    <div class="inner">
+
+        <!-- Menu -->
+        <nav id="menu">
+            <header class="major">
+                <h2>Menu</h2>
+            </header>
+            <ul>
+
+                <c:choose>
+
+                    <c:when test="${empty userRole}">
+                        <li><a href="../index.jsp">Homepage</a></li>
+                        <li><a href="../jsp/FindBook.jsp">Find book</a></li>
+                        <li><a href="../jsp/AllBooks.jsp">All books</a></li>
+                    </c:when>
+
+                    <c:when test="${userRole eq 'user'}">
+                        <li><a href="../index.jsp">Homepage</a></li>
+                        <li><a href="../jsp/FindBook.jsp">Find book</a></li>
+                        <li><a href="../jsp/AllBooks.jsp">All books</a></li>
+                        <li><a href="/controller?command=userOrders">User Page</a></li>
+                        <li><a href="../jsp/UpdateUser.jsp">Update User Mail</a></li>
+                    </c:when>
+
+                    <c:when test="${userRole eq 'librarian'}">
+                        <li><a href="../index.jsp">Homepage</a></li>
+                        <li><a href="../jsp/FindBook.jsp">Find book</a></li>
+                        <li><a href="../jsp/AllBooks.jsp">All books</a></li>
+                        <li><a href="/controller?command=getAllOrders">All Orders</a></li>
+                    </c:when>
+
+                    <c:when test="${userRole eq 'admin'}">
+                        <li><a href="../index.jsp">Homepage</a></li>
+                        <li><a href="../jsp/FindBook.jsp">Find book</a></li>
+                        <li><a href="../jsp/AddBook.jsp">Add Book</a></li>
+                        <li><a href="../jsp/AddLibrarian.jsp">Add Librarian</a></li>
+                        <li><a href="../jsp/AllBooks.jsp">All books</a></li>
+                        <li><a href="/controller?command=getAllOrders" >All Orders</a></li>
+                        <li><a href="/controller?command=getAllUsers" >All Users</a></li>
+                        <li><a href="/controller?command=getAllLibrarians" >All Librarians</a></li>
+                    </c:when>
+                </c:choose>
+            </ul>
+        </nav>
+
+        <!-- Section -->
+
+        <section>
+            <ul class="contact">
+                <li class="fa-envelope-o"><a href="#">library@google.com</a></li>
+                <li class="fa-phone">(000) 000-0000</li>
+                <li class="fa-home">1234 Somewhere Road<br/>
+                    Ukraine, TN 00000-0000
+                </li>
+            </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+        </footer>
+
+    </div>
+</div>

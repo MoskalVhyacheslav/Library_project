@@ -1,0 +1,69 @@
+<%@ include file="../jspf/taglib.jspf" %>
+
+<form action="/controller" method="post">
+    <c:if test="${not empty books}">
+        <div class="table-wrapper">
+            <table id="table">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Edition</th>
+                    <th>Edition Date</th>
+                    <th>Days for read</th>
+                    <th>Amount</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="book" items="${books}" varStatus="listBooks">
+                    <tr>
+                        <td>${book.title}</td>
+                        <td>${book.author}</td>
+                        <td>${book.edition}</td>
+                        <td>${book.editionDate}</td>
+                        <td>${book.creditDays}</td>
+                        <td>${book.amount}</td>
+
+                        <c:choose>
+                            <c:when test="${sessionScope.userRole eq 'user'}">
+                                <c:choose>
+                                    <c:when test="${mylib:contains(sessionScope.userBooks,book) eq true}">
+                                        <td>
+                                            <input type="button" value="Delete Order" id="${listBooks.index}"
+                                                   onclick="deleteOrder('${book.title}',
+                                                           '${book.author}','${listBooks.index}')"/>
+                                        </td>
+                                    </c:when>
+
+                                    <c:otherwise>
+                                        <td>
+                                            <input type="button" value="Add Order" id="${listBooks.index}"
+                                                   onclick="addOrder('${book.title}'
+                                                           ,'${book.author}','${listBooks.index}')"/>
+                                        </td>
+                                    </c:otherwise>
+
+                                </c:choose>
+                            </c:when>
+
+                            <c:when test="${sessionScope.userRole eq 'admin'}">
+                                <td>
+                                    <input type="button" value="Update Book" id="${listBooks.index}"
+                                           onclick="updateBook('${book.title}','${book.author}')"/>
+                                </td>
+                            </c:when>
+                        </c:choose>
+
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+
+        </div>
+    </c:if>
+</form>
+
+<c:if test="${empty books}">
+    <h3>No books!</h3>
+</c:if>
+
